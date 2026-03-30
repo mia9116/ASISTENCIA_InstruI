@@ -1,15 +1,18 @@
 \documentclass[aspectratio=169]{beamer}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}{../figures/}}
+\makeatother
 \usetheme{Bruno}
-\input{comunes/preamble}
+\input{preamble}
 \title{Instrumentación I: \\ \emph{Medidas de}\\ \emph{presión   }}
 \author{
     Juan J. Rojas, Hugo Sanchez Ortiz
 }
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
-\background{fig/background.jpg}
+\background{background.jpg}
 \begin{document}
-\input{comunes/postamble}
+\input{postamble}
 \maketitle
 
 \newcommand{\blackandwhite}{white} %change this at the end
@@ -25,7 +28,7 @@
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
-            \includegraphics[width = 0.8\linewidth]{fig/pressure.png}
+            \includegraphics[width = 0.8\linewidth]{pressure.png}
             
             \tiny{\href{https://commons.wikimedia.org/w/index.php?curid=25665611}{By Klaus-Dieter Keller - Own work, Public Domain}}
         \end{column}
@@ -67,7 +70,7 @@ Algunas equivalencias:
             \end{itemize}
         \end{column}
         \begin{column}{0.50\textwidth}
-            \includegraphics[width = 1.1\linewidth]{fig/Presion/Tipos.PNG}
+            \includegraphics[width = 1.1\linewidth]{presion/Tipos.PNG}
             %\tiny{\href{https://commons.wikimedia.org/w/index.php?curid=25665611}{By Klaus-Dieter Keller - Own work, Public Domain}}
         \end{column}
     \end{columns}
@@ -76,9 +79,9 @@ Algunas equivalencias:
 \begin{frame}{Instrumentos de presión}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
-        \includegraphics[width = 0.9 \linewidth]{fig/Presion/Instrumentos.PNG}
+        \includegraphics[width = 0.9 \linewidth]{presion/Instrumentos.PNG}
             
-            \tiny{\cite{sole2005instrumentacion}}
+            \tiny{Tomado de Sol\'e (2005)}
             
         \end{column}
         \begin{column}{0.50\textwidth}
@@ -132,8 +135,8 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.2\textwidth}
             \centering
-            \includegraphics[width=3cm]{fig/Presion/columna.PNG}
-             \\ \tiny{Tomado de \cite{pallas2012sensors}}
+            \includegraphics[width=3cm]{presion/columna.PNG}
+             \\ \tiny{Tomado de Pall\'as-Areny y Webster (2012)}
         \end{column}
     \end{columns}
 \end{frame}
@@ -149,8 +152,8 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
-            \includegraphics[width=7cm]{fig/Presion/bourdon.PNG}
-             \\ \tiny{Tomado de \cite{pallas2012sensors}}
+            \includegraphics[width=7cm]{presion/bourdon.PNG}
+             \\ \tiny{Tomado de Pall\'as-Areny y Webster (2012)}
         \end{column}
     \end{columns}
 \end{frame}
@@ -166,9 +169,9 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.4\textwidth}
             \centering
-            \includegraphics[width=5cm]{fig/Presion/membrana.PNG}
-            \includegraphics[width=5cm]{fig/Presion/memsmembrana.PNG}
-             \\ \tiny{Tomado de \cite{pallas2012sensors}}
+            \includegraphics[width=5cm]{presion/membrana.PNG}
+            \includegraphics[width=5cm]{presion/memsmembrana.PNG}
+             \\ \tiny{Tomado de Pall\'as-Areny y Webster (2012)}
         \end{column}
     \end{columns}
 \end{frame}
@@ -184,8 +187,8 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.3\textwidth}
             \centering
-            \includegraphics[width=3.5cm]{fig/Presion/piezores.PNG}
-             \\ \tiny{Tomado de \cite{pallas2012sensors}}
+            \includegraphics[width=3.5cm]{presion/piezores.PNG}
+             \\ \tiny{Tomado de Pall\'as-Areny y Webster (2012)}
         \end{column}
     \end{columns}
 \end{frame}
@@ -200,8 +203,8 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
-            \includegraphics[width=6cm]{fig/Presion/memscapacitive.png}
-             \\ \tiny{Tomado de \cite{pallas2012sensors}}
+            \includegraphics[width=6cm]{presion/memscapacitive.png}
+             \\ \tiny{Tomado de Pall\'as-Areny y Webster (2012)}
         \end{column}
     \end{columns}
 \end{frame}
@@ -210,7 +213,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
     Micrófono capacitivo usado en IPhone 4
     \begin{figure}
         \centering
-        \includegraphics[width=4cm]{fig/Presion/memsmic.jpg}
+        \includegraphics[width=4cm]{presion/memsmic.jpg}
         \tiny{Tomado de \href{https://www.memsjournal.com/2011/03/overview-of-mems-microphone-technologies-for-consumer-applications.html}{acá}}
     \end{figure}
 \end{frame}
@@ -226,8 +229,8 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.4\textwidth}
             \centering
-            \includegraphics[width=6cm]{fig/Presion/VRP.PNG}
-             \\ \tiny{Tomado de \cite{pallas2012sensors}}
+            \includegraphics[width=6cm]{presion/VRP.PNG}
+             \\ \tiny{Tomado de Pall\'as-Areny y Webster (2012)}
         \end{column}
     \end{columns}
 \end{frame}
@@ -249,7 +252,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
-            \includegraphics[width=6cm]{fig/Presion/EM_Sensor.jpg}
+            \includegraphics[width=6cm]{presion/EM_Sensor.jpg}
              \\ \tiny{\href{https://www.directindustry.com/prod/noshok/product-26191-462375.html}{Sensor Electromecánico de Presión}}
         \end{column}
     \end{columns}
@@ -259,7 +262,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
  \begin{table}[]
  \footnotesize
     \centering
-    \begin{tabular}{m{3.2cm} m{1.2cm} m{1.2cm} m{1.9cm} m{1.8cm} m{1.6cm}}
+    \begin{tabular}{m{3.2cm} m{1.2cm} m{1.2cm} m{2.2cm} m{1.6cm} m{1.5cm}}
         \toprule
         \textbf{Tipo de Sensor} & \textbf{Margen [bar]} & \textbf{Exactitud [$\%$]} &\textbf{Estabilidad} & \textbf{Sobrecarga} & \textbf{Nivel de Señal} \\
         \midrule
@@ -272,7 +275,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \textbf{Piezoeléctrico} & 0-600 & 1 & Mala & 200 \% & 600 mV/bar\\
         \bottomrule
     \end{tabular}
-    \caption{Comparación entre distintos tipos de presión electromecánicos \cite{sole2005instrumentacion}}
+    \caption{Comparación entre distintos tipos de presión electromecánicos}
     \label{tab:Comparacion}
 \end{table}
 \end{frame}
@@ -282,7 +285,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
     
      \begin{column}{0.5\textwidth}
             \centering
-            \includegraphics[width=4cm]{fig/Presion/McLeod_gauge_01.jpg}
+            \includegraphics[width=4cm]{presion/McLeod_gauge_01.jpg}
              \\ \tiny{\href{https://en.wikipedia.org/wiki/McLeod_gauge}{Medidor McLeod}}
         \end{column}
         \begin{column}{0.5\textwidth}
@@ -303,7 +306,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
 
 \begin{frame}{Campos de trabajo. Elementos Electrónicos de Vacío}
             \centering
-            \includegraphics[width=9.5cm]{fig/Presion/Vaccuum Gauges.jpg}
+            \includegraphics[width=9.5cm]{presion/Vaccuum Gauges.jpg}
              \\ \tiny{\href{https://www.lesker.com/newweb/technical_info/vacuumtech/pressure_04_bestgauge.cfm}{Campo de trabajo por tecnología}}
        
 \end{frame}
@@ -313,7 +316,7 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
  \begin{table}[]
  \footnotesize
     \centering
-    \begin{tabular}{m{3.2cm} m{1.2cm} m{1.2cm} m{1.9cm} m{1.8cm} m{1.6cm}}
+    \begin{tabular}{m{3.2cm} m{1.2cm} m{1.5cm} m{1.9cm}}
         \toprule
         \textbf{Tipo de Sensor} & \textbf{Margen [torrs]} & \textbf{Escala} &\textbf{Exactitud}\\
         \midrule
@@ -326,16 +329,18 @@ Para poder medir la presión esta se compara con una fuerza conocida o se mide s
         \textbf{Cátodo frío} & $10^{-2} - 10^{-7}$ & Logarítmica & 1-10 \% \\
         \bottomrule
     \end{tabular}
-    \caption{Comparación entre distintos tipos de presión electrónicos de vacío} \cite{sole2005instrumentacion}
+    \caption{Comparación entre distintos tipos de presión electrónicos de vacío}
     \label{tab:Comparacionvacio}
 \end{table}
 \end{frame}
 
 
 \begin{frame}{Referencias}
-\bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{comunes/referencias}
+\begin{itemize}
+    \item Sol\'e, A. C. 2005. \emph{Instrumentaci\'on Industrial}.
+    \item Pall\'as-Areny, R. y J. G. Webster. 2012. \emph{Sensors and Signal Conditioning}.
+\end{itemize}
 \end{frame}
 
 \end{document}
