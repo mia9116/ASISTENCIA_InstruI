@@ -1,0 +1,57 @@
+% !TEX root = 00_instructivo.tex
+\chapter{Transductores mecánicos: acelerómetro MPU6050 y medición de altitud}
+
+\section*{Objetivos}
+\begin{itemize}
+    \item Implementar un contador de pasos usando el acelerómetro MPU6050.
+    \item Estimar cambios de altitud mediante doble integración de la aceleración vertical.
+    \item Evaluar la precisión del sistema en caminatas reales.
+\end{itemize}
+
+\section*{Materiales y equipo}
+\begin{itemize}
+    \item Módulo MPU6050 (acelerómetro + giroscopio 6 DOF).
+    \item Arduino Uno (o Nano) con batería portátil.
+    \item Mini protoboard de 9 canales.
+    \item Correa para fijar el módulo al tobillo.
+    \item Cinta métrica.
+\end{itemize}
+
+\section*{Instrucciones}
+\begin{enumerate}
+    \item Conecte MPU6050: VCC a 5V, GND a GND, SDA a A4, SCL a A5.
+    \item Calibre el acelerómetro leyendo los valores en reposo (promedio de 100 muestras).
+    \item Sujete el módulo al tobillo. Programe la detección de picos en el eje Z (vertical) con un umbral dinámico.
+    \item Realice 5 pruebas de 20 pasos cada una, comparando conteo manual vs conteo del sistema.
+    \item Para altitud: integre dos veces la aceleración vertical (después de restar la gravedad). Compare con la altura real medida en escaleras.
+    \item Grafique la aceleración en función del tiempo e identifique los picos de paso.
+\end{enumerate}
+
+\section*{Esquemático}
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz}[scale=0.8]
+\draw (0,0) node[above]{Arduino Uno};
+\draw (1,0.5) node[anchor=east]{5V} -- (3,0.5) node[anchor=west]{MPU6050 VCC};
+\draw (1,1) node[anchor=east]{GND} -- (3,1) node[anchor=west]{GND};
+\draw (1,1.5) node[anchor=east]{A4 (SDA)} -- (3,1.5);
+\draw (1,2) node[anchor=east]{A5 (SCL)} -- (3,2);
+\draw (4,1.75) node {I2C bus};
+\end{circuitikz}
+\caption{El MPU6050 se conecta directamente por I2C. Use un capacitor de 0.1µF entre 5V y GND cerca del módulo.}
+\end{figure}
+
+\section*{Preguntas de análisis}
+\begin{enumerate}
+    \item ¿Por qué la doble integración acumula error rápidamente? ¿Cómo se puede mitigar?
+    \item ¿Qué papel juega el giroscopio en la corrección de la orientación del acelerómetro?
+    \item ¿Cuál es la frecuencia de muestreo mínima recomendada para contar pasos humanos? Justifique.
+    \item Proponga un filtro digital (ej. media móvil) para eliminar ruido de alta frecuencia en la señal de aceleración.
+\end{enumerate}
+
+\section*{Bibliografía}
+\begin{itemize}
+    \item MPU6050 Datasheet. InvenSense.
+    \item “Step counting using accelerometers” – Application Note, Analog Devices.
+    \item Filtro complementario para IMU – Tutorial de Arduino.
+\end{itemize}
