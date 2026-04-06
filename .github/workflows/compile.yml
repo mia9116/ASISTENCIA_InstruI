@@ -1,19 +1,41 @@
 name: Compile LaTeX
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Debug directory structure
+        run: |
+          echo "Current working directory:"
+          pwd
+          echo "Listing root:"
+          ls -la
+          echo "Listing common directory (if exists):"
+          ls -la common/ || echo "common/ NOT FOUND"
+          echo "Listing guide directory:"
+          ls -la guide/
+          echo "Checking if ../common/preamble.tex exists from guide:"
+          ls -la guide/../common/preamble.tex || echo "File not found at guide/../common/preamble.tex"
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: guide/00_instructivo.tex
+          # Si tus archivos preamble.tex y arduinoLanguage.tex están en common/,
+          # LaTeX necesita saber dónde buscar. Puedes usar pre_compile para copiarlos
+          # o usar working_directory. Lo más simple es añadir:
+          working_directory: ./
+          # Opcional: si faltan paquetes, instálalos aquí:
+          # pre_compile: "tlmgr install <paquete>"
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: Instructivo_Laboratorio
           path: guide/00_instructivo.pdf
