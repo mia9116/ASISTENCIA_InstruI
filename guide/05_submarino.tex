@@ -1,0 +1,63 @@
+% !TEX root = 00_instructivo.tex
+\chapter{Transductores acústicos: hidrófono con piezoeléctrico y amplificador MAX4466}
+
+\section*{Objetivos}
+\begin{itemize}
+    \item Construir un hidrófono usando un sensor piezoeléctrico impermeabilizado.
+    \item Acondicionar la señal con el amplificador MAX4466.
+    \item Clasificar sonidos submarinos (golpes, motores, burbujas) mediante umbrales de amplitud.
+\end{itemize}
+
+\section*{Materiales y equipo}
+\begin{itemize}
+    \item Sensor piezoeléctrico analógico Keyestudio (o disco piezo con cables).
+    \item Módulo amplificador MAX4466 (ganancia ajustable).
+    \item Arduino Uno.
+    \item Mini protoboard de 9 canales.
+    \item Recipiente con agua (pecera).
+    \item Fuentes de sonido: motor pequeño, objeto metálico, manguera para burbujas.
+    \item Silicona o resina epóxica para impermeabilizar.
+\end{itemize}
+
+\section*{Instrucciones}
+\begin{enumerate}
+    \item Cubra el piezoeléctrico con una capa delgada de silicona, dejando el conector expuesto. Deje secar.
+    \item Conecte el piezo a la entrada del MAX4466 (IN y GND). La salida del MAX4466 va a un pin analógico del Arduino (A0).
+    \item Ajuste la ganancia del MAX4466 para que el ruido de fondo en agua tranquila sea ~1.5V DC (offset).
+    \item Genere sonidos: golpee la pared del recipiente, active el motor sumergido, produzca burbujas.
+    \item Programe umbrales: si la amplitud pico supera un valor V1 encienda LED rojo, si está entre V0 y V1 LED azul.
+    \item Registre 10 segundos de señal para cada fuente y calcule el nivel RMS relativo.
+\end{enumerate}
+
+\section*{Esquemático}
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz}[scale=0.7]
+\draw (0,0) node[above]{Arduino};
+% MAX4466
+\draw (2,0) node[op amp, scale=0.8] (max) {};
+\draw (max.out) -- (3,0) node[anchor=west]{A0};
+\draw (1,-0.5) node[anchor=east]{5V} -- (max.V+);
+\draw (1,-1) node[anchor=east]{GND} -- (max.V-);
+% Piezo conectado a entrada del MAX4466
+\draw (0,0.5) node[pz] (piezo) {};
+\draw (piezo.+) -- (max.-);
+\draw (piezo.-) -- (max.+);
+\end{circuitikz}
+\caption{El piezo se conecta a la entrada diferencial del MAX4466. La salida va a A0. Alimentación 5V y GND.}
+\end{figure}
+
+\section*{Preguntas de análisis}
+\begin{enumerate}
+    \item ¿Por qué se necesita un amplificador de ganancia ajustable? ¿Qué pasa si la ganancia es muy alta?
+    \item ¿Cómo afecta la impermeabilización a la sensibilidad del piezoeléctrico?
+    \item Compare la respuesta en frecuencia de un hidrófono piezoeléctrico vs un micrófono convencional.
+    \item Proponga un método para clasificar sonidos no solo por amplitud sino por contenido espectral (FFT).
+\end{enumerate}
+
+\section*{Bibliografía}
+\begin{itemize}
+    \item MAX4466 Datasheet. Maxim Integrated.
+    \item “Piezoelectric hydrophone” – Application note, Measurement Specialties.
+    \item Keyestudio Analog Piezoelectric Ceramic Vibration Sensor – User manual.
+\end{itemize}
